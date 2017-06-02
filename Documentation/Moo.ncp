@@ -7,7 +7,7 @@
       <Entity type="Class">
         <Name>FarmGrid</Name>
         <Access>Public</Access>
-        <Location left="191" top="120" />
+        <Location left="831" top="361" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
@@ -15,10 +15,10 @@
       <Entity type="Class">
         <Name>Building</Name>
         <Access>Public</Access>
-        <Location left="379" top="120" />
+        <Location left="263" top="10" />
         <Size width="194" height="230" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">int buildingType</Member>
+        <Member type="Field">BuildingType buildingType</Member>
         <Member type="Field">public int produceCount</Member>
         <Member type="Field">public int constructRate</Member>
         <Member type="Field">public int constructPercentage</Member>
@@ -32,18 +32,20 @@
       <Entity type="Class">
         <Name>UIManager</Name>
         <Access>Public</Access>
-        <Location left="587" top="120" />
-        <Size width="180" height="216" />
+        <Location left="263" top="298" />
+        <Size width="194" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public static UIManager thisManager</Member>
+        <Member type="Field">Text[] refreshable</Member>
         <Member type="Method">public void Refresh()</Member>
+        <Member type="Method">public void NewMethod()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>ResourceManager</Name>
         <Access>Public</Access>
-        <Location left="777" top="120" />
-        <Size width="244" height="216" />
+        <Location left="537" top="10" />
+        <Size width="244" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public static ResourceManager thisManager</Member>
         <Member type="Field">int[] Resources</Member>
@@ -54,7 +56,7 @@
       <Entity type="Class">
         <Name>ShopManager</Name>
         <Access>Public</Access>
-        <Location left="777" top="402" />
+        <Location left="878" top="447" />
         <Size width="174" height="216" />
         <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
@@ -62,12 +64,59 @@
       <Entity type="Class">
         <Name>Pointer</Name>
         <Access>Public</Access>
-        <Location left="113" top="414" />
-        <Size width="162" height="216" />
+        <Location left="10" top="10" />
+        <Size width="171" height="230" />
         <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
       </Entity>
+      <Entity type="Enum">
+        <Name>BuildingType</Name>
+        <Access>Public</Access>
+        <Location left="69" top="586" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Value>Chickens</Value>
+        <Value>Cows</Value>
+        <Value>Sheep</Value>
+      </Entity>
     </Entities>
-    <Relationships />
+    <Relationships>
+      <Relationship type="Association" first="1" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>482</X>
+          <Y>34</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>209</X>
+          <Y>32</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>512</X>
+          <Y>86</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
   </ProjectItem>
 </Project>
