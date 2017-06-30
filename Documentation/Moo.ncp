@@ -72,7 +72,7 @@
       <Entity type="Enum">
         <Name>BuildingType</Name>
         <Access>Public</Access>
-        <Location left="69" top="586" />
+        <Location left="581" top="298" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Value>Chickens</Value>
@@ -82,8 +82,6 @@
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="3">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -94,8 +92,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="5" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -106,8 +102,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="2" second="3">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
