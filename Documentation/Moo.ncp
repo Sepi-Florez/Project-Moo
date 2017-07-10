@@ -7,38 +7,27 @@
       <Entity type="Class">
         <Name>FarmGrid</Name>
         <Access>Public</Access>
-        <Location left="831" top="361" />
-        <Size width="162" height="216" />
+        <Location left="891" top="276" />
+        <Size width="237" height="216" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">public static int w</Member>
+        <Member type="Field">public static int h</Member>
+        <Member type="Field">Transform[,] grid = new Transform[w,h]</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Building</Name>
         <Access>Public</Access>
-        <Location left="263" top="10" />
+        <Location left="294" top="302" />
         <Size width="194" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">BuildingType buildingType</Member>
-        <Member type="Field">public int produceCount</Member>
         <Member type="Field">public int constructRate</Member>
         <Member type="Field">public int constructPercentage</Member>
         <Member type="Method">public void OnLClick()</Member>
         <Member type="Method">public void OnRClick()</Member>
-        <Member type="Method">void Produce()</Member>
         <Member type="Method">void Construct()</Member>
         <Member type="Method">public void Upgrade(int upgrade)</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>UIManager</Name>
-        <Access>Public</Access>
-        <Location left="263" top="298" />
-        <Size width="194" height="216" />
-        <Collapsed>False</Collapsed>
-        <Member type="Field">public static UIManager thisManager</Member>
-        <Member type="Field">Text[] refreshable</Member>
-        <Member type="Method">public void Refresh()</Member>
-        <Member type="Method">public void NewMethod()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -48,15 +37,17 @@
         <Size width="244" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public static ResourceManager thisManager</Member>
-        <Member type="Field">int[] Resources</Member>
+        <Member type="Field">int[] resources</Member>
+        <Member type="Field">Text resourcesText</Member>
         <Member type="Method">public void Add(int count, int resource)</Member>
-        <Member type="Method">public void Subtract()</Member>
+        <Member type="Method">public void Subtract(int count, int resource)</Member>
+        <Member type="Method">void Refresh(int resource)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>ShopManager</Name>
         <Access>Public</Access>
-        <Location left="878" top="447" />
+        <Location left="891" top="24" />
         <Size width="174" height="216" />
         <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
@@ -67,46 +58,94 @@
         <Location left="10" top="10" />
         <Size width="171" height="230" />
         <Collapsed>False</Collapsed>
+        <Member type="Method">void Controls()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Enum">
         <Name>BuildingType</Name>
         <Access>Public</Access>
-        <Location left="581" top="298" />
-        <Size width="162" height="216" />
+        <Location left="568" top="368" />
+        <Size width="162" height="99" />
         <Collapsed>False</Collapsed>
-        <Value>Chickens</Value>
-        <Value>Cows</Value>
+        <Value>Barn</Value>
+        <Value>Storage</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>Storage</Name>
+        <Access>Public</Access>
+        <Location left="204" top="705" />
+        <Size width="162" height="139" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int space</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Barn</Name>
+        <Access>Public</Access>
+        <Location left="424" top="705" />
+        <Size width="162" height="139" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">BarnType barnType</Member>
+        <Member type="Field">int produceCount</Member>
+        <Member type="Method">void Produce()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>BarnType</Name>
+        <Access>Public</Access>
+        <Location left="643" top="719" />
+        <Size width="162" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>Chicken</Value>
         <Value>Sheep</Value>
+        <Value>Cow</Value>
       </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Association" first="1" second="3">
+      <Relationship type="Association" first="1" second="2">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>482</X>
-          <Y>34</Y>
+          <X>513</X>
+          <Y>326</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="5" second="1">
+      <Relationship type="Association" first="4" second="1">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>209</X>
-          <Y>32</Y>
+          <X>240</X>
+          <Y>324</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="2" second="3">
+      <Relationship type="Generalization" first="6" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="7" second="8">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>515</X>
+          <Y>417</Y>
+        </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>512</X>
-          <Y>86</Y>
+          <X>543</X>
+          <Y>417</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
