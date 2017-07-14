@@ -7,21 +7,21 @@
       <Entity type="Class">
         <Name>FarmGrid</Name>
         <Access>Public</Access>
-        <Location left="891" top="276" />
+        <Location left="891" top="196" />
         <Size width="237" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public static int w</Member>
-        <Member type="Field">public static int h</Member>
-        <Member type="Field">Transform[,] grid = new Transform[w,h]</Member>
+        <Member type="Field">public int h</Member>
+        <Member type="Field">FarmNode[,] grid = new FarmNode[w,h]</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Building</Name>
         <Access>Public</Access>
-        <Location left="294" top="302" />
+        <Location left="294" top="301" />
         <Size width="194" height="230" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">BuildingType buildingType</Member>
+        <Member type="Field">BuildingType type</Member>
         <Member type="Field">public int constructRate</Member>
         <Member type="Field">public int constructPercentage</Member>
         <Member type="Method">public void OnLClick()</Member>
@@ -47,7 +47,7 @@
       <Entity type="Class">
         <Name>ShopManager</Name>
         <Access>Public</Access>
-        <Location left="891" top="24" />
+        <Location left="1300" top="10" />
         <Size width="174" height="216" />
         <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
@@ -85,7 +85,7 @@
         <Location left="424" top="705" />
         <Size width="162" height="139" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">BarnType barnType</Member>
+        <Member type="Field">BarnType type</Member>
         <Member type="Field">int produceCount</Member>
         <Member type="Method">void Produce()</Member>
         <Modifier>None</Modifier>
@@ -100,24 +100,47 @@
         <Value>Sheep</Value>
         <Value>Cow</Value>
       </Entity>
+      <Entity type="Class">
+        <Name>FarmNode</Name>
+        <Access>Public</Access>
+        <Location left="891" top="511" />
+        <Size width="237" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">NodeType type</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>NodeType</Name>
+        <Access>Public</Access>
+        <Location left="1210" top="511" />
+        <Size width="162" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>Empty</Value>
+        <Value>Road</Value>
+        <Value>Building</Value>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>513</X>
-          <Y>326</Y>
+          <Y>325</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="4" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
           <X>240</X>
-          <Y>324</Y>
+          <Y>323</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -131,17 +154,21 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="7" second="8">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="5">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>515</X>
-          <Y>417</Y>
+          <Y>416</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
           <X>543</X>
@@ -149,6 +176,22 @@
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
       </Relationship>
     </Relationships>
   </ProjectItem>
