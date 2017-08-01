@@ -13,12 +13,14 @@
         <Member type="Field">public static int w</Member>
         <Member type="Field">public int h</Member>
         <Member type="Field">FarmNode[,] grid = new FarmNode[w,h]</Member>
+        <Member type="Method">void CreateGrid()</Member>
+        <Member type="Method">public void ConstructionMode()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Building</Name>
         <Access>Public</Access>
-        <Location left="294" top="301" />
+        <Location left="294" top="300" />
         <Size width="194" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">BuildingType type</Member>
@@ -26,6 +28,7 @@
         <Member type="Field">public int constructPercentage</Member>
         <Member type="Method">public void OnLClick()</Member>
         <Member type="Method">public void OnRClick()</Member>
+        <Member type="Method">public void OnHover()</Member>
         <Member type="Method">void Construct()</Member>
         <Member type="Method">public void Upgrade(int upgrade)</Member>
         <Modifier>None</Modifier>
@@ -58,13 +61,15 @@
         <Location left="10" top="10" />
         <Size width="171" height="230" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">GameObject HeldObject</Member>
         <Member type="Method">void Controls()</Member>
+        <Member type="Method">public void Hold(GameObject construction)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Enum">
         <Name>BuildingType</Name>
         <Access>Public</Access>
-        <Location left="568" top="368" />
+        <Location left="570" top="363" />
         <Size width="162" height="99" />
         <Collapsed>False</Collapsed>
         <Value>Barn</Value>
@@ -107,17 +112,37 @@
         <Size width="237" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">NodeType type</Member>
+        <Member type="Method">public void OnLClick()</Member>
+        <Member type="Method">public void OnHover()</Member>
+        <Member type="Method">public void ContructionMode()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Enum">
         <Name>NodeType</Name>
         <Access>Public</Access>
-        <Location left="1210" top="511" />
+        <Location left="1186" top="559" />
         <Size width="162" height="112" />
         <Collapsed>False</Collapsed>
         <Value>Empty</Value>
         <Value>Road</Value>
         <Value>Building</Value>
+      </Entity>
+      <Entity type="Delegate">
+        <Name>Construction</Name>
+        <Access>Public</Access>
+        <Location left="1186" top="287" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <ReturnType>void</ReturnType>
+      </Entity>
+      <Entity type="Interface">
+        <Name>OnClick</Name>
+        <Access>Public</Access>
+        <Location left="294" top="35" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void OnClickL()</Member>
+        <Member type="Method">void OnRClick()</Member>
       </Entity>
     </Entities>
     <Relationships>
@@ -128,7 +153,7 @@
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>513</X>
-          <Y>325</Y>
+          <Y>324</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -140,7 +165,7 @@
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
           <X>240</X>
-          <Y>323</Y>
+          <Y>322</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -167,12 +192,12 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>515</X>
-          <Y>416</Y>
+          <X>518</X>
+          <Y>412</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>543</X>
-          <Y>417</Y>
+          <X>545</X>
+          <Y>412</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -182,6 +207,10 @@
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1154</X>
+          <Y>622</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
