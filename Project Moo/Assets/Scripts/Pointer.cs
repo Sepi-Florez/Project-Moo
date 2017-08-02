@@ -21,7 +21,6 @@ public class Pointer : MonoBehaviour {
 
     void Update() {
         Controls();
-
     }
     private void Controls() {
         if(Ray() != null) {

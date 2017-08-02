@@ -13,6 +13,8 @@
         <Member type="Field">public static int w</Member>
         <Member type="Field">public int h</Member>
         <Member type="Field">FarmNode[,] grid = new FarmNode[w,h]</Member>
+        <Member type="Field">public Transform gridParent</Member>
+        <Member type="Field">public Vector3 gridPosition</Member>
         <Member type="Method">void CreateGrid()</Member>
         <Member type="Method">public void ConstructionMode()</Member>
         <Modifier>None</Modifier>
@@ -20,7 +22,7 @@
       <Entity type="Class">
         <Name>Build</Name>
         <Access>Public</Access>
-        <Location left="294" top="300" />
+        <Location left="143" top="344" />
         <Size width="194" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">BuildingType type</Member>
@@ -28,7 +30,7 @@
         <Member type="Field">public int constructPercentage</Member>
         <Member type="Method">public void OnLClick()</Member>
         <Member type="Method">public void OnRClick()</Member>
-        <Member type="Method">public void OnHover()</Member>
+        <Member type="Method">public void Hover()</Member>
         <Member type="Method">void Construct()</Member>
         <Member type="Method">public void Upgrade(int upgrade)</Member>
         <Modifier>None</Modifier>
@@ -36,7 +38,7 @@
       <Entity type="Class">
         <Name>ResourceManager</Name>
         <Access>Public</Access>
-        <Location left="537" top="10" />
+        <Location left="508" top="10" />
         <Size width="244" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public static ResourceManager thisManager</Member>
@@ -58,8 +60,8 @@
       <Entity type="Class">
         <Name>Pointer</Name>
         <Access>Public</Access>
-        <Location left="10" top="10" />
-        <Size width="171" height="230" />
+        <Location left="35" top="10" />
+        <Size width="219" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">GameObject held</Member>
         <Member type="Method">void Controls()</Member>
@@ -72,17 +74,16 @@
       <Entity type="Enum">
         <Name>BuildType</Name>
         <Access>Public</Access>
-        <Location left="570" top="363" />
+        <Location left="422" top="440" />
         <Size width="162" height="112" />
         <Collapsed>False</Collapsed>
         <Value>Barn</Value>
         <Value>Storage</Value>
-        <Value>Road</Value>
       </Entity>
       <Entity type="Class">
         <Name>Storage</Name>
         <Access>Public</Access>
-        <Location left="204" top="705" />
+        <Location left="10" top="705" />
         <Size width="162" height="139" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int space</Member>
@@ -91,7 +92,7 @@
       <Entity type="Class">
         <Name>Barn</Name>
         <Access>Public</Access>
-        <Location left="424" top="705" />
+        <Location left="311" top="705" />
         <Size width="162" height="139" />
         <Collapsed>False</Collapsed>
         <Member type="Field">BarnType type</Member>
@@ -102,7 +103,7 @@
       <Entity type="Enum">
         <Name>BarnType</Name>
         <Access>Public</Access>
-        <Location left="643" top="719" />
+        <Location left="537" top="720" />
         <Size width="162" height="112" />
         <Collapsed>False</Collapsed>
         <Value>Chicken</Value>
@@ -131,18 +132,10 @@
         <Value>Road</Value>
         <Value>Building</Value>
       </Entity>
-      <Entity type="Delegate">
-        <Name>Construction</Name>
-        <Access>Public</Access>
-        <Location left="1186" top="287" />
-        <Size width="162" height="216" />
-        <Collapsed>False</Collapsed>
-        <ReturnType>void</ReturnType>
-      </Entity>
       <Entity type="Interface">
         <Name>IClickable</Name>
         <Access>Public</Access>
-        <Location left="294" top="35" />
+        <Location left="657" top="380" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">void OnClickL()</Member>
@@ -152,21 +145,25 @@
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>513</X>
-          <Y>324</Y>
+          <X>362</X>
+          <Y>368</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="4" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>240</X>
-          <Y>322</Y>
+          <X>89</X>
+          <Y>366</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -180,26 +177,32 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="7" second="8">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="5">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>518</X>
-          <Y>412</Y>
+          <X>362</X>
+          <Y>428</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>545</X>
-          <Y>412</Y>
+          <X>389</X>
+          <Y>519</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="9" second="10">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -210,8 +213,30 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="9">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="11" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="11" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>373</X>
+          <Y>397</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>

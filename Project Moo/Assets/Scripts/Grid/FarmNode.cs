@@ -5,7 +5,9 @@ using UnityEngine;
 public class FarmNode : MonoBehaviour, IClickable {
     enum NodeType { Empty, Road, Building };
     NodeType type = NodeType.Empty;
+
     bool cons = false;
+
     GameObject build;
     void Awake() {
 
@@ -17,6 +19,7 @@ public class FarmNode : MonoBehaviour, IClickable {
             Pointer.pointer.CancelConstruction();
             type = NodeType.Building;
             build.transform.position = transform.position;
+            build.layer = LayerMask.NameToLayer("Default");
         }
     }
     public void OnRClick() {
@@ -28,17 +31,8 @@ public class FarmNode : MonoBehaviour, IClickable {
     public void ConstructionMode() {
         if (!cons) {
             cons = !cons;
-            switch (Pointer.pointer.held.GetComponent<Build>().type) {
-                case (Build.BuildType)0:
-
-                    break;
-                case (Build.BuildType)1:
-
-                    break;
-                case (Build.BuildType)2:
-
-                    break;
-
+            if (build == null) {
+                type = NodeType.Empty;
             }
             if (type == NodeType.Empty) {
                 GetComponent<SpriteRenderer>().color = Color.green;
