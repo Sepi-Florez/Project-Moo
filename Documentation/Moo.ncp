@@ -18,7 +18,7 @@
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Building</Name>
+        <Name>Build</Name>
         <Access>Public</Access>
         <Location left="294" top="300" />
         <Size width="194" height="230" />
@@ -61,19 +61,23 @@
         <Location left="10" top="10" />
         <Size width="171" height="230" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">GameObject HeldObject</Member>
+        <Member type="Field">GameObject held</Member>
         <Member type="Method">void Controls()</Member>
-        <Member type="Method">public void Hold(GameObject construction)</Member>
+        <Member type="Method">IEnumerator Hold()</Member>
+        <Member type="Method">public void Construction(GameObject build)</Member>
+        <Member type="Method">public void CancelConstruction()</Member>
+        <Member type="Method">public IClickable Ray()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Enum">
-        <Name>BuildingType</Name>
+        <Name>BuildType</Name>
         <Access>Public</Access>
         <Location left="570" top="363" />
-        <Size width="162" height="99" />
+        <Size width="162" height="112" />
         <Collapsed>False</Collapsed>
         <Value>Barn</Value>
         <Value>Storage</Value>
+        <Value>Road</Value>
       </Entity>
       <Entity type="Class">
         <Name>Storage</Name>
@@ -136,19 +140,18 @@
         <ReturnType>void</ReturnType>
       </Entity>
       <Entity type="Interface">
-        <Name>OnClick</Name>
+        <Name>IClickable</Name>
         <Access>Public</Access>
         <Location left="294" top="35" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">void OnClickL()</Member>
         <Member type="Method">void OnRClick()</Member>
+        <Member type="Method">void Hover()</Member>
       </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="2">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -159,8 +162,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="4" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -179,16 +180,12 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="7" second="8">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="5">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -203,8 +200,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="9" second="10">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -215,8 +210,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="9">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>

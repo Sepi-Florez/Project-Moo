@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IClickable {
     void OnLClick();
     void OnRClick();
+    void Hover();
+
 }
