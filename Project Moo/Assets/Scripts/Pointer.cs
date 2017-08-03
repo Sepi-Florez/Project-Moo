@@ -50,7 +50,8 @@ public class Pointer : MonoBehaviour {
     public IClickable Ray() {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit,targetLayer)){
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, targetLayer)){
+            print("Hitting : " + hit.transform.name);
             IClickable clickInterface = hit.transform.GetComponent(typeof(IClickable)) as IClickable;
             if(clickInterface != null) {
                 return clickInterface;

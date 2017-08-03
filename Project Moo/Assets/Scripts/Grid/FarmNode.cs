@@ -19,7 +19,7 @@ public class FarmNode : MonoBehaviour, IClickable {
             Pointer.pointer.CancelConstruction();
             type = NodeType.Building;
             build.transform.position = transform.position;
-            build.layer = LayerMask.NameToLayer("Default");
+            build.layer = LayerMask.NameToLayer("Build");
         }
     }
     public void OnRClick() {
