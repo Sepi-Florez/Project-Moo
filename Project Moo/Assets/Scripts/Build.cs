@@ -20,6 +20,5 @@ public class Build : MonoBehaviour, IClickable {
 
     }
     public void Hover() {
-        print("Hovering Barn");
     }
 }
