@@ -7,12 +7,14 @@ public class Barn : Build {
     BarnType type;
     public int produceCount;
 
-    public void OnLClick() {
-        Produce();
+    public override void OnLClick() {
+        base.OnLClick();
+        if(base.CP == 100) {
+            Produce();
+        }
     }
 
     public void Produce() {
-        print("Producing");
+        //ResourceManager.thisManager.Add(produceCount,type.
     }
-
 }

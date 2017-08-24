@@ -20,6 +20,10 @@ public class FarmNode : MonoBehaviour, IClickable {
             type = NodeType.Building;
             build.transform.position = transform.position;
             build.layer = LayerMask.NameToLayer("Build");
+            //Color Change ( Might look for a better spot to place this )
+            Color c = build.GetComponent<SpriteRenderer>().color;
+            c = new Color(c.r, c.g, c.b, 0.1f);
+            build.GetComponent<SpriteRenderer>().color = c;
         }
     }
     public void OnRClick() {
