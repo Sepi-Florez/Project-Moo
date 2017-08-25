@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Barn : Build {
-    enum BarnType {Chickens, Sheep, Cow}
-    BarnType type;
+    public enum BarnType {Chickens, Sheep, Cow}
+    public BarnType type2;
     public int produceCount;
 
     public override void OnLClick() {
@@ -15,6 +15,6 @@ public class Barn : Build {
     }
 
     public void Produce() {
-        //ResourceManager.thisManager.Add(produceCount,type.
+        ResourceManager.thisManager.Add(produceCount, (int)type2);
     }
 }

@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Storage : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class Storage : Build {
+    public override void OnLClick() {
+        base.OnLClick();
+        if (base.CP == 100) {
+            print("Storage");
+        }
+    }
 }
