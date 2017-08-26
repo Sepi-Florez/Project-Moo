@@ -6,13 +6,18 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour {
     public static ResourceManager thisManager;
     public int[] resources = new int[3];
-    Text[] resourcesText = new Text[3];
+    public string[] resourceTags;
+    Text[,] resourcesText;
     public Transform resourcesTextObj;
 
     private void Awake() {
+        resourcesText = new Text[resources.Length, 20];
         thisManager = this;
-        for(int i = 0; i < resourcesTextObj.childCount; i++) {
-            resourcesText[i] = resourcesTextObj.GetChild(i).GetComponent<Text>();
+        for(int i = 0; i < resources.Length; i++) {
+            GameObject[] a = GameObject.FindGameObjectsWithTag(resourceTags[i]);
+            for (int ii = 0; ii < a.Length; ii++) {
+                resourcesText[i, ii] = a[ii].GetComponent<Text>();
+            }
         }
     }
     public void Add(int count, int resource) {
@@ -24,6 +29,9 @@ public class ResourceManager : MonoBehaviour {
         Refresh(resource);
     }
     void Refresh(int resource) {
-        resourcesText[resource].text = resources[resource].ToString();
+        for(int i = 0; resourcesText[resource,i] != null; i++) {
+            resourcesText[resource,i].text = resources[resource].ToString();
+        }
+
     }
 }
