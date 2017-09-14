@@ -8,31 +8,72 @@ using System.Xml;
 using System.Xml.Serialization;
 
 public class ShopManager : MonoBehaviour {
-    Transform[] goods;
-    int[] prices;
+    public Transform[] goods;
+    public int[] prices;
 
+    public string dataPath;
+    Catalog shopCatalog;
 
+    public Text title;
+    public Text description;
+    public Text price;
+    public Image image;
+
+    private void Awake() {
+        Load();
+
+    }
+    public void Select(int i) {
+        title.text = shopCatalog.catalog[i].name;
+        description.text = shopCatalog.catalog[i].description;
+    }
     public void Buy(int i) {
 
     }
-
-}
-public class Catalogue {
-    public List<ShopItem> catalogue;
-    Catalogue() {
-        catalogue = new List<ShopItem>();
+    private void Load() {
+        TextAsset n = (TextAsset)Resources.Load(dataPath);
+        if (n != null) {
+            shopCatalog = Deserialize(n);
+            print("Deserialized!");
+        }
+        else {
+            print("Shop Catalog XML file not found");
+            shopCatalog = new Catalog();
+        }
+    }
+    Catalog Deserialize(TextAsset xmlFile) {
+        XmlSerializer serializer = new XmlSerializer(typeof(Catalog));
+        using (System.IO.StringReader reader = new System.IO.StringReader(xmlFile.text)) {
+            return serializer.Deserialize(reader) as Catalog;
+        }
     }
 }
+public class Catalog {
+    public List<ShopItem> catalog = new List<ShopItem>();
+    public Catalog() {
+    }
+}
+
 public class ShopItem {
     [XmlElement("Name")]
-    string name;
+    public string name;
     [XmlElement("Description")]
-    string description;
-    [XmlElement("Price in money")]
-    int price;
+    public string description;
+    [XmlElement("Image")]
+    public string spritePath;
+    [XmlElement("Price")]
+    public int price;
     [XmlElement("Identity")]
-    int id;
-    ShopItem() {
+    public int id;
 
+    public ShopItem() {
+
+    }
+    public ShopItem(string _name, string _description, string _spritePath, int _price, int _id) {
+        name = _name;
+        description = _description;
+        spritePath = _spritePath;
+        price = _price;
+        id = _id;
     }
 }

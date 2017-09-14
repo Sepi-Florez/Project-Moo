@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <catalog>
+    <ShopItem>
+      <Name>Chicken Barn</Name>
+      <Description>This will house your chicks nice and cozy. This automaticly produces 2 eggs every seconds and 1 egg if you click it.</Description>
+	  	  <Image>sprites/barn00</Image>
+      <Price>10</Price>
+      <Identity>0</Identity>
+    </ShopItem>
+	<ShopItem>
+      <Name>Cow Barn</Name>
+      <Description>This will house your cows nice and cozy. This automaticly produces 2 milk every seconds and 1 milk if you click it.</Description>
+	  <Image>sprites/barn01</Image>
+      <Price>25</Price>
+      <Identity>1</Identity>
+    </ShopItem>
+	<ShopItem>
+      <Name>Sheep Barn</Name>
+      <Description>This will house your sheep nice and cozy. This automaticly produces 2 wool every seconds and 1 milk if you click it.</Description>
+	  <Image>sprites/barn02</Image>
+      <Price>50</Price>
+      <Identity>2</Identity>
+    </ShopItem>
+  </catalog>
+</Catalog>
