@@ -17,6 +17,7 @@ public class Pointer : MonoBehaviour {
     public Coroutine hold;
     private void Awake() {
         pointer = this;
+        held = null;
     }
 
     void Update() {
@@ -66,14 +67,17 @@ public class Pointer : MonoBehaviour {
 
     }
     public void Construction (GameObject build) {
-        targetLayer = constructionLayer;
-        Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,10));
-        held = Instantiate(build, p, Quaternion.identity);
-        hold = StartCoroutine(Hold());
-        constructionEvent();
+    	if(held == null){
+            targetLayer = constructionLayer;
+		    Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,10));
+		    held = Instantiate(build, p, Quaternion.identity);
+		    hold = StartCoroutine(Hold());
+		    constructionEvent();
+    	}
     }
     public void CancelConstruction() {
         Destroy(held);
+        held = null;
         constructionEvent();
         targetLayer = standardLayer;
     }
