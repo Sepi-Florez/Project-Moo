@@ -19,6 +19,7 @@ public class ResourceManager : MonoBehaviour {
                 resourcesText[i, ii] = a[ii].GetComponent<Text>();
             }
         }
+        Add(1000, 0);
     }
     public void Add(int count, int resource) {
         resources[resource] += count;

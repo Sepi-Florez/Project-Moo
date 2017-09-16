@@ -15,6 +15,6 @@ public class Barn : Build {
     }
 
     public void Produce() {
-        ResourceManager.thisManager.Add(produceCount, (int)type2);
+        ResourceManager.thisManager.Add(produceCount, (int)type2 + 1);
     }
 }

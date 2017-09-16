@@ -16,7 +16,7 @@ public class FarmNode : MonoBehaviour, IClickable {
         if(Pointer.pointer.held != null && type == NodeType.Empty) {
             build = Pointer.pointer.held;
             Pointer.pointer.held = null;
-            Pointer.pointer.CancelConstruction();
+            Pointer.pointer.CancelConstruction(0);
             type = NodeType.Building;
             build.transform.position = transform.position;
             build.layer = LayerMask.NameToLayer("Build");

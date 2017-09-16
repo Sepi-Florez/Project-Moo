@@ -8,8 +8,9 @@ using System.Xml;
 using System.Xml.Serialization;
 
 public class ShopManager : MonoBehaviour {
-    public Transform[] goods;
-    public int[] prices;
+    public static ShopManager thisManager;
+
+    public GameObject[] goods;
 
     public string dataPath;
     Catalog shopCatalog;
@@ -19,16 +20,27 @@ public class ShopManager : MonoBehaviour {
     public Text price;
     public Image image;
 
+    int selected;
+
     private void Awake() {
+        thisManager = this;
         Load();
+        Select(0);
 
     }
     public void Select(int i) {
         title.text = shopCatalog.catalog[i].name;
         description.text = shopCatalog.catalog[i].description;
+        price.text = shopCatalog.catalog[i].price.ToString();
+        selected = i;
     }
-    public void Buy(int i) {
+    public void Buy() {
+        Pointer.pointer.Construction(goods[selected]);
+        ResourceManager.thisManager.Subtract(shopCatalog.catalog[selected].price,0);
 
+    }
+    public void Refund() {
+        ResourceManager.thisManager.Add(shopCatalog.catalog[selected].price,0);       
     }
     private void Load() {
         TextAsset n = (TextAsset)Resources.Load(dataPath);
