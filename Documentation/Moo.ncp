@@ -52,9 +52,20 @@
       <Entity type="Class">
         <Name>ShopManager</Name>
         <Access>Public</Access>
-        <Location left="1300" top="10" />
-        <Size width="174" height="216" />
+        <Location left="1425" top="10" />
+        <Size width="174" height="264" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">public Transform[] goods</Member>
+        <Member type="Field">public string dataPath</Member>
+        <Member type="Field">Catalog shopCatalog</Member>
+        <Member type="Field">public Text title</Member>
+        <Member type="Field">public Text description</Member>
+        <Member type="Field">public Text price</Member>
+        <Member type="Field">public Image image</Member>
+        <Member type="Method">void Select(int i)</Member>
+        <Member type="Method">void Buy(int i)</Member>
+        <Member type="Method">private void Load()</Member>
+        <Member type="Method">Catalog Deserialize(TextAsset xmlFile)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -142,9 +153,32 @@
         <Member type="Method">void OnRClick()</Member>
         <Member type="Method">void Hover()</Member>
       </Entity>
+      <Entity type="Class">
+        <Name>Catalog</Name>
+        <Access>Public</Access>
+        <Location left="1425" top="337" />
+        <Size width="162" height="106" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public List&lt;ShopItem&gt; catalog</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>ShopItem</Name>
+        <Access>Public</Access>
+        <Location left="1425" top="511" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public string name</Member>
+        <Member type="Field">public string description</Member>
+        <Member type="Field">public string spritePath</Member>
+        <Member type="Field">public int price</Member>
+        <Member type="Field">public int id</Member>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -155,6 +189,8 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="4" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -173,12 +209,16 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="7" second="8">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="5">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -193,6 +233,8 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="9" second="10">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -203,24 +245,46 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="9">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="11" second="9">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="11" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
           <X>373</X>
           <Y>397</Y>
         </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="12">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="12" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
