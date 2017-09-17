@@ -103,12 +103,19 @@
       <Entity type="Class">
         <Name>Barn</Name>
         <Access>Public</Access>
-        <Location left="311" top="705" />
-        <Size width="162" height="139" />
+        <Location left="245" top="705" />
+        <Size width="218" height="264" />
         <Collapsed>False</Collapsed>
         <Member type="Field">BarnType type</Member>
         <Member type="Field">int produceCount</Member>
+        <Member type="Field">bool autoProduce</Member>
+        <Member type="Field">Coroutine autoProduceLoop</Member>
+        <Member type="Field">public int autoProductTime</Member>
+        <Member type="Field">bool begin</Member>
+        <Member type="Method">public override void OnLClick()</Member>
         <Member type="Method">void Produce()</Member>
+        <Member type="Method">private void Begin()</Member>
+        <Member type="Method">public IEnumerator AutoProduce(int time)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Enum">
@@ -174,11 +181,19 @@
         <Member type="Field">public int price</Member>
         <Member type="Field">public int id</Member>
       </Entity>
+      <Entity type="Class">
+        <Name>UICC</Name>
+        <Access>Public</Access>
+        <Location left="984" top="829" />
+        <Size width="207" height="220" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">GameObject countPref</Member>
+        <Member type="Method">public void CC(int change, int counter)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="1" second="2">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -189,8 +204,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="4" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -209,16 +222,12 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="7" second="8">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="5">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -233,8 +242,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="9" second="10">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -245,24 +252,18 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="9">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="11" second="9">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="11" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -273,16 +274,12 @@
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="3" second="12">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="12" second="13">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
