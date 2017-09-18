@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour {
     public static ResourceManager thisManager;
-    public int[] resources = new int[3];
+    public int[] resources;
     public string[] resourceTags;
     Text[,] resourcesText;
-    public Transform resourcesTextObj;
 
     private void Awake() {
         resourcesText = new Text[resources.Length, 20];
@@ -19,6 +18,8 @@ public class ResourceManager : MonoBehaviour {
                 resourcesText[i, ii] = a[ii].GetComponent<Text>();
             }
         }
+    }
+    public void Start(){
         Add(1000, 0);
     }
     public void Add(int count, int resource) {
@@ -31,10 +32,11 @@ public class ResourceManager : MonoBehaviour {
     }
     void Refresh(int resource) {
         for(int i = 0; resourcesText[resource,i] != null; i++) {
+            print(resourcesText[resource, i].text + " found");
             UICC.CounterChanger.CC(resources[resource] - System.Convert.ToInt32(resourcesText[resource, i].text), resourcesText[resource, i].transform);
             resourcesText[resource,i].text = resources[resource].ToString();
-
         }
 
     }
+
 }
