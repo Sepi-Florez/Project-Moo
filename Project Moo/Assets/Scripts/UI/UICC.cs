@@ -28,34 +28,48 @@ public class UICC : MonoBehaviour {
             }
         }
         if(!n){
-            print("NEw");
+            print("New");
             counters.Add(counter); 
             changes.Add(change);
             StartCoroutine(CCPush(counters.Count - 1));
         }
+
 
     }
     public IEnumerator CCPush(int i){
         while(changes[i] != 0) {
             print("Pushing CC");
             Transform n = Instantiate(countPref, new Vector2(counters[i].position.x, counters[i].position.y) /*transform.GetComponent<Camera>().WorldToScreenPoint(counter.position)*/ + offset , Quaternion.identity).transform;
-            n.parent = FindObjectOfType<Canvas>().transform;
             n.parent = counters[i].parent;
             n.SetAsLastSibling();
-            n.GetChild(0).GetComponent<Text>().text = "+ " + changes[i].ToString();
             if(changes[i] < 0){
                 n.GetChild(0).GetComponent<Text>().color = Color.red;
-                n.GetChild(0).GetComponent<Text>().text = "- ";
             }
             else{
                 n.GetChild(0).GetComponent<Text>().color = Color.green;
                 n.GetChild(0).GetComponent<Text>().text = "+ ";
             }
             n.GetChild(0).GetComponent<Text>().text += changes[i].ToString();
-
             changes[i] = 0;
+            
             yield return new WaitForSeconds(updateRate);
-
         }
+        changes.RemoveAt(i);
+        counters.RemoveAt(i);
+    }
+    public void CCForcePush(int change, Transform counter) {
+        print("Forcing Push CC");
+        Transform n = Instantiate(countPref, new Vector2(counter.position.x, counter.position.y) /*transform.GetComponent<Camera>().WorldToScreenPoint(counter.position)*/ + offset, Quaternion.identity).transform;
+        n.parent = counter.parent;
+        n.SetAsLastSibling();
+        //n.GetChild(0).GetComponent<Text>().text = "+ " + change.ToString();
+        if (change < 0) {
+            n.GetChild(0).GetComponent<Text>().color = Color.red;
+        }
+        else {
+            n.GetChild(0).GetComponent<Text>().color = Color.green;
+            n.GetChild(0).GetComponent<Text>().text = "+ ";
+        }
+        n.GetChild(0).GetComponent<Text>().text += change.ToString();
     }
 }

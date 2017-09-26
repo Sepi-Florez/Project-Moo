@@ -27,7 +27,6 @@ public class Build : MonoBehaviour, IClickable {
             Color c = transform.GetComponent<SpriteRenderer>().color;
             c = new Color(c.r, c.g, c.b, (float)CP / 100f);
             transform.GetComponent<SpriteRenderer>().color = c;
-            print(c + "And" + transform.GetComponent<SpriteRenderer>().color);
         }
         anim.SetTrigger("Click");
     }

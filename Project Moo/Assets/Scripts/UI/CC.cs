@@ -6,6 +6,6 @@ public class CC : MonoBehaviour {
 
 
     public void Kill() {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }
