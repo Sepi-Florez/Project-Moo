@@ -37,7 +37,7 @@ public class ResourceManager : MonoBehaviour {
                 resourcesText[resource, i].text = resources[resource].ToString();
             }
             else {
-                UICC.CounterChanger.CC(resources[resource] - System.Convert.ToInt32(resourcesText[resource, i].text), resourcesText[resource, i].transform);
+                UICC.CounterChanger.CC(resources[resource] - System.Convert.ToInt32(resourcesText[resource, i].text), resource - 1);
                 resourcesText[resource, i].text = resources[resource].ToString();
             }
         }

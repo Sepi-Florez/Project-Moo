@@ -31,10 +31,10 @@ public class Build : MonoBehaviour, IClickable {
         anim.SetTrigger("Click");
     }
     public virtual void OnRClick() {
-        print("Right Click");
+        //print("Right Click");
     }
     public void Hover() {
-        print("Hovering");
+        //print("Hovering");
     }
 
 }

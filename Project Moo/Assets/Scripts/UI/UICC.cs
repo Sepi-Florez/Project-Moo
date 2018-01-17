@@ -14,31 +14,22 @@ public class UICC : MonoBehaviour {
 
     public List<int> changes = new List<int>();
     public List<Transform> counters = new List<Transform>();
+    public bool[] loop;
     
     public void Awake() {
         CounterChanger = this;
     }
 
-    public void CC(int change, Transform counter) {
-        bool n = false;
-        for(int i = 0; i < counters.Count; i++){
-            if(counters[i] == counter){
-                n = true;
-                changes[i] += change;
-            }
+    public void CC(int change, int i) {
+        changes[i] += change;
+        if(!loop[i]) {
+            StartCoroutine(CCPush(i));
+            loop[i] = true;
         }
-        if(!n){
-            print("New");
-            counters.Add(counter); 
-            changes.Add(change);
-            StartCoroutine(CCPush(counters.Count - 1));
-        }
-
-
     }
     public IEnumerator CCPush(int i){
         while(changes[i] != 0) {
-            print("Pushing CC");
+            print("Pushing CC : " +  i);
             Transform n = Instantiate(countPref, new Vector2(counters[i].position.x, counters[i].position.y) /*transform.GetComponent<Camera>().WorldToScreenPoint(counter.position)*/ + offset , Quaternion.identity).transform;
             n.parent = counters[i].parent;
             n.SetAsLastSibling();
@@ -51,11 +42,10 @@ public class UICC : MonoBehaviour {
             }
             n.GetChild(0).GetComponent<Text>().text += changes[i].ToString();
             changes[i] = 0;
-            
             yield return new WaitForSeconds(updateRate);
         }
-        changes.RemoveAt(i);
-        counters.RemoveAt(i);
+        loop[i] = false;
+        print("Ended Push Loop for : " + i);
     }
     public void CCForcePush(int change, Transform counter) {
         print("Forcing Push CC");
